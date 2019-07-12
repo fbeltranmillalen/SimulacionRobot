@@ -61,8 +61,8 @@ zAccCoord = gcurve(color=color.red, label="z-coord")  # a graphics curve
 t_inicial = 0       # seg
 t_final = 20        # seg
 delta_t = 0.1     # seg
-velocidad_lineal = 0.6  # m/s
-velocidad_angular = 0.0  # m/s
+velocidad_lineal = 0.7  # m/s
+velocidad_angular = 0.5  # m/s
 array_size = int(math.ceil(((t_final - t_inicial) / delta_t) + 1))
 tiempo_array = np.zeros(array_size, float)
 
@@ -139,7 +139,7 @@ r3.draw_r3()
 # creacion de robot
 robot = Robot(initial_position=vector(posicion_x_array[0], 1, posicion_y_array[0]), size=vector(4, 2, 2), color=color.red)
 myRobot = robot.draw_robot()
-
+attach_trail(myRobot)
 # creacion de label que contiene a las coordenadas
 coordenada = Coordenada(myRobot)
 ncoordenada = coordenada.dibujar_coordenada()
@@ -147,9 +147,13 @@ ncoordenada = coordenada.dibujar_coordenada()
 #   =================================================================================================
 
 posicion_y_correcta = 1
+orientacion_referencia = vector(0, 1, 0)
+origen = vector(0, 0, 0)
+
 for i in range(array_size):
     rate(10)
     myRobot.pos = vector(posicion_x_array[i], posicion_y_correcta, posicion_y_array[i])
+    myRobot.rotate(angle=radians(angulo_orientacion_array[i]), axis=orientacion_referencia, origin=origen)
     coordenada.actualizar_coordenada(ncoordenada, myRobot.pos)
 
 """
