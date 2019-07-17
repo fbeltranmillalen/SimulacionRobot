@@ -4,7 +4,7 @@ from vpython import vector, arrow, color, label, box
 class R3:
 
     # TODO
-    # hacerlo con textura?, que se vean los cuadrados al intersectar eje x con z
+    # hacerlo con textura?, que se vean los cuadrados al intersectar eje x con y
     # constructor
 
     AXIS_SIZE = 50
