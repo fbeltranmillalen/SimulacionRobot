@@ -1,8 +1,8 @@
 from vpython import *
 
-from src.scripts.R3 import R3
-from src.scripts.Robot import Robot
-from src.scripts.Coordenada import Coordenada
+from src.scripts.Clases.R3 import R3
+from src.scripts.Clases.Robot import Robot
+from src.scripts.Clases.Coordenada import Coordenada
 import math
 import numpy as np
 
