@@ -28,7 +28,7 @@ t_inicial = 0  # seg
 t_final = 20  # seg
 delta_t = 0.01  # seg
 velocidad_lineal = 5.0  # m/s
-velocidad_angular = 0.5  # m/s
+velocidad_angular = 10.5  # m/s
 array_size = int(math.ceil(((t_final - t_inicial) / delta_t) + 1))
 tiempo_array = np.zeros(array_size, float)
 
@@ -52,7 +52,8 @@ for k in range(array_size):  # metodo de integracion euler-cromer, ref: Elementa
     if k + 1 != array_size:
         posicion_x_array[k + 1] = posicion_x_array[k] + delta_t * velocidad_x_array[k]
         posicion_y_array[k + 1] = posicion_y_array[k] + delta_t * velocidad_y_array[k]
-        angulo_orientacion_array[k + 1] = angulo_orientacion_array[k] + delta_t * velocidad_angular_array[k]  # uso radianes, pero no estoy seguro si es así o no
+        angulo_orientacion_array[k + 1] = angulo_orientacion_array[k] + delta_t * radians(
+            velocidad_angular_array[k])  # uso radianes, pero no estoy seguro si es así o no
 
 print("velocidad_lineal_array")
 print(velocidad_lineal_array)
@@ -112,7 +113,7 @@ ROBOT_SIZE_Z = 1.0
 
 # creacion de robot
 robot = Robot(initial_position=vector(posicion_x_array[0], posicion_y_array[0], 0),
-              size=vector(ROBOT_SIZE_X, ROBOT_SIZE_Y, ROBOT_SIZE_Z), color=color.red, robot_type=1)
+              size=vector(ROBOT_SIZE_X, ROBOT_SIZE_Y, ROBOT_SIZE_Z), color=color.red)
 myRobot = robot.draw_robot()
 attach_trail(myRobot)
 
@@ -124,7 +125,7 @@ ncoordenada = coordenada.dibujar_coordenada()
 
 #   =================================================================================================
 
-posicion_z_correcta = ROBOT_SIZE_Z / 1.5
+posicion_z_correcta = ROBOT_SIZE_Z / 2
 escala_de_la_flecha = 2
 
 if SEGUIR_AL_ROBOT_CON_LA_CAMARA:

@@ -18,8 +18,8 @@ class R3:
                  color_x=color.red,
                  color_y=color.blue,
                  color_z=color.green,
-                 floor_position=vector(AXIS_SIZE/2, AXIS_SIZE/2, -0.1),
-                 floor_size=vector(0.1, AXIS_SIZE, AXIS_SIZE),
+                 floor_position=vector(0, 0, -0.1),
+                 floor_size=vector(0.1, AXIS_SIZE*2, AXIS_SIZE*2),
                  floor_axis=vector(0, 0, 1)):
         self.origen = origen
         self.shaftwidth = shaftwidth
@@ -39,16 +39,22 @@ class R3:
     def draw_r3(self, axis_size=AXIS_SIZE):
 
         # EJE x
-        arrow(pos=self.origen, axis=self.ejeX, shaftwidth=self.shaftwidth, color=self.colorX)
-        label(pos=vector(axis_size, 1, 0), text='x', color=color.red)
+        arrow(pos=self.origen, axis=self.ejeX, shaftwidth=self.shaftwidth, color=self.colorX, opacity=0.2)
+        label(pos=vector(axis_size, 1, 0), text='x', color=color.red, opacity=0.2)
 
         # EJE y
-        arrow(pos=self.origen, axis=self.ejeY, shaftwidth=self.shaftwidth, color=self.colorY)
-        label(pos=vector(1, axis_size, 0), text='y', color=color.blue)
+        arrow(pos=self.origen, axis=self.ejeY, shaftwidth=self.shaftwidth, color=self.colorY, opacity=0.2)
+        label(pos=vector(1, axis_size, 0), text='y', color=color.blue, opacity=0.2)
 
         # EJE z
-        arrow(pos=self.origen, axis=self.ejeZ, shaftwidth=self.shaftwidth, color=self.colorZ)
-        label(pos=vector(0, 1, axis_size/2), text='z', color=color.green)
+        arrow(pos=self.origen, axis=self.ejeZ, shaftwidth=self.shaftwidth, color=self.colorZ, opacity=0.2)
+        label(pos=vector(0, 1, axis_size/2), text='z', color=color.green, opacity=0.2)
 
         # superficie blanca
         box(pos=self.floorPosition, size=self.floorSize, axis=self.floorAxis, opacity=0.2)
+
+        #bordes
+        box(pos=vector(axis_size, 0, 0), size=vector(axis_size*2.1,2,2), axis=self.ejeY)
+        box(pos=vector(-axis_size, 0, 0), size=vector(axis_size*2.1,2,2), axis=self.ejeY)
+        box(pos=vector(0, axis_size, 0), size=vector(axis_size*2.1,2,2), axis=self.ejeX)
+        box(pos=vector(0, -axis_size, 0), size=vector(axis_size*2.1,2,2), axis=self.ejeX)
