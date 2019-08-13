@@ -15,7 +15,7 @@ class Coordenada:
         self.text_color = text_color
 
     def dibujar_coordenada(self):
-        cordenadas = label(pos=(self.Robot.pos + self.altura), text=str(self.Robot.pos), color=self.text_color)
+        cordenadas = label(pos=(self.Robot.pos + self.altura), text=str(self.Robot.pos), color=self.text_color, height=8, opacity=0.1)
         return cordenadas
 
     def actualizar_coordenada(self, nueva_coordenada, nueva_posicion):
