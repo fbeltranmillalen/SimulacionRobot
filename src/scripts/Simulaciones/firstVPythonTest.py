@@ -112,7 +112,7 @@ ROBOT_SIZE_Z = 1.0
 
 # creacion de robot
 robot = Robot(initial_position=vector(posicion_x_array[0], posicion_y_array[0], 0),
-              size=vector(ROBOT_SIZE_X, ROBOT_SIZE_Y, ROBOT_SIZE_Z), color=color.red, robot_type=1)
+              size=vector(ROBOT_SIZE_X, ROBOT_SIZE_Y, ROBOT_SIZE_Z), color=color.red, robot_type=0)
 myRobot = robot.draw_robot()
 attach_trail(myRobot)
 
@@ -135,5 +135,7 @@ for i in range(array_size - 1):
     myRobot.pos = vector(posicion_x_array[i], posicion_y_array[i], posicion_z_correcta)
     pointer.pos = myRobot.pos
     pointer.axis = escala_de_la_flecha * vector(velocidad_x_array[i + 1], velocidad_y_array[i + 1], 0.0)
-    myRobot.axis = pointer.axis
+    #myRobot.axis = pointer.axis
+    rotate(myRobot, angle=angulo_orientacion_array[i+1]- angulo_orientacion_array[i], axis=vector(0,0,1))
+    print(angulo_orientacion_array[i])
     coordenada.actualizar_coordenada(ncoordenada, myRobot.pos)
